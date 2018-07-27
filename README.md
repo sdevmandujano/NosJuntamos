@@ -1,19 +1,39 @@
-* **The requirements for Project #2 are as follows:**
+# Nos Juntamos
+### La forma sencilla de decidir sobre fechas, lugares y más.
 
-  * Must use a Node and Express Web Server
 
-  * Must be backed by a MySQL Database with a Sequelize ORM  
+Definir vistas:
 
-  * Must have both GET and POST routes for retrieving and adding new data
+Home 
 
-  * Must be deployed using Heroku (with Data)
+Sign up (Administrador)
 
-  * Must utilize at least one new library, package, or technology that we haven’t discussed
+Log In((Administrador)):
+- Solo usando Facebook
+- Crear  un evento
+ - Cerrar la Votación de fecha de evento
 
-  * Must have a polished frontend / UI 
+Creación de eventos;(Administrador)
+- Como se llama el evento?
+- Lugar - opciones predefinidas (texto) o google maps
+- Nota (de que trata el evento)
 
-  * Must have folder structure that meets MVC Paradigm
+     --Opciones del evento (Administrador):
+           - Calendario seleccionar hora (rango) y dias
+           - Un voto por persona
+           - Elmiminar eventos
+           - Agregar los correos de los invitados o con un link que se puede enviar en WA.
 
-  * Must meet good quality coding standards (indentation, scoping, naming)
+Modificación de eventos (Administrador):
+- Si creador del evento: Cerrar la fecha del evento.
+- Ver la lista de invitados
+- Ver el link del evento
 
-  * Must not expose sensitive API key information on the server, see [Protecting-API-Keys-In-Node.md](../../../../01-Class-Content/10-nodejs/03-Supplemental/Protecting-API-Keys-In-Node.md)
+Votacion de evento (cualquier usuario con link):
+- registrar voto por correo electronico 
+- seleccionar fecha
+
+
+
+
+![alt text](https://github.com/sdevmandujano/NosJuntamos/edit/master/project2.jpg "Project 2 screens")
