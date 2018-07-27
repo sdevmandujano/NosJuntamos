@@ -36,4 +36,4 @@ Votacion de evento (cualquier usuario con link):
 
 
 
-![alt text](https://github.com/sdevmandujano/NosJuntamos/project2.jpg "Project 2 screens")
+![alt text](https://github.com/sdevmandujano/NosJuntamos/blob/master/project2.jpg "Project 2 screens")
