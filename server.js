@@ -1,6 +1,13 @@
+// *****************************************************************************
+// Server.js - This file is the initial starting point for the Node/Express server.
+//
+// ******************************************************************************
+// *** Dependencies
+// =============================================================
 require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
+// Configure Passport for auth.
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
 //var exphbs = require("express-handlebars");
@@ -33,6 +40,8 @@ passport.serializeUser(function(user, cb) {
 passport.deserializeUser(function(obj, cb) {
   cb(null, obj);
 });
+//check the code above ater having a database.
+
 
 
 var db = require("./models");
@@ -45,7 +54,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-// Handlebars
+// Initialize Passport and restore authentication state, if any, from the
+// session.
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+/* Handlebars
 app.engine(
   "handlebars",
   exphbs({
@@ -53,7 +68,7 @@ app.engine(
   })
 );
 
-app.set("view engine", "handlebars");
+app.set("view engine", "handlebars");*/
 
 // Routes
 require("./routes/apiRoutes")(app);

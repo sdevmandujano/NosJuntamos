@@ -3,7 +3,7 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all examples
   app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db..findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
     });
   });
@@ -28,6 +28,7 @@ module.exports = function(app) {
       res.render('index', { user: req.user });
     });
 
+    // called using a modal
     app.get('/login',
       function(req, res){
         res.render('login');
@@ -45,6 +46,7 @@ module.exports = function(app) {
     app.get('/profile',
       require('connect-ensure-login').ensureLoggedIn(),
       function(req, res){
+        //in our case it will probably call the create event html
       res.render('profile', { user: req.user });
     });
 
