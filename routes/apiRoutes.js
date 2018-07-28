@@ -14,21 +14,23 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/createUser", function(req, res) {
+
+  });
+
 
   app.put("/api/modifyEvent", function(req, res) {
 
   });
 
+  app.post("/api/newVote", function(req, res) {
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.User.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
+
   });
 
-    // Delete an example by id
-    app.delete("/api/examples/:id", function(req, res) {
+
+    // Delete an event by id
+    app.delete("/api/event/:id", function(req, res) {
       db.User.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
         res.json(dbExample);
     });
