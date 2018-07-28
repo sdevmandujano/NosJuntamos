@@ -17,6 +17,7 @@
     "express-handlebars": "^3.0.0",
     "mysql2": "^1.5.3",
     "passport-facebook": "^2.1.1",
+    "pg-calendar": "^1.4.29",
     "sequelize": "^4.38.0"
   },
   "devDependencies": {
