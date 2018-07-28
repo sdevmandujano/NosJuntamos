@@ -2,22 +2,34 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db..findAll({}).then(function(dbExamples) {
+  app.get("/api/getUser", function(req, res) {
+    db.User.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
     });
   });
 
+  app.post("/api/createEvent", function(req, res) {
+    db.Event.create(req.body).then(function(dbExample) {
+      res.json(dbExample);
+    });
+  });
+
+
+  app.put("/api/modifyEvent", function(req, res) {
+
+  });
+
+
   // Create a new example
   app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
+    db.User.create(req.body).then(function(dbExample) {
       res.json(dbExample);
     });
   });
 
     // Delete an example by id
     app.delete("/api/examples/:id", function(req, res) {
-      db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+      db.User.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
         res.json(dbExample);
     });
   });
@@ -51,3 +63,4 @@ module.exports = function(app) {
     });
 
   }
+  typo
