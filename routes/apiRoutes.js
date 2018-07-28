@@ -28,12 +28,9 @@ module.exports = function(app) {
 
   });
 
-
     // Delete an event by id
     app.delete("/api/event/:id", function(req, res) {
-      db.User.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-        res.json(dbExample);
-    });
+
   });
 
   //Login in routes using facebook
