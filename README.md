@@ -1,3 +1,15 @@
+
+Tecnologias Utilizadas:
+
+*HTML
+*CSS
+*VUE.JS
+*JAVASCRIPT
+*NODE JS
+*EXPRESS
+*SEQUELIZE
+
+
 # Nos Juntamos
 ### La forma sencilla de decidir sobre fechas, lugares y más.
 
