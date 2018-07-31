@@ -20,3 +20,10 @@ var form = new Vue({
         return !isNaN(parseFloat(n)) && isFinite(n);
       },
       
+      validateForm: function (event) {
+        this.attemptSubmit = true;
+        if (this.missingName || this.wrongNumber) event.preventDefault();
+      },
+    },
+  });
+  
