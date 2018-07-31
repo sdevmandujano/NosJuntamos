@@ -18,7 +18,12 @@
             <div class="form-control-feedback" v-if="attemptSubmit && missingName">Campo Requerido.</div>
           </div><!-- /form-group -->
 
-
+          <div class="form-group" v-bind:class="{ 'has-warning': attemptSubmit && wrongNumber }">
+            <label class="form-control-label" for="number">Hora</label>
+            <input id="number" name="number" class="form-control form-control-warning" type="text" v-model="number">
+            <div class="form-control-feedback" v-if="attemptSubmit && wrongNumber">Horario entre 1 y 24 horas.</div>
+          </div><!-- /form-group -->
+          
 
 </body>
 </html>
