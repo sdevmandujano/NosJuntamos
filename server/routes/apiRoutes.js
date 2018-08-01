@@ -2,35 +2,40 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/getUser", function(req, res) {
+  app.get("/api/getEvents", function(req, res) {
     db.User.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
     });
   });
 
+  app.get("/api/:event_id/location", function(req, res) {
+    db.User.findAll({
+      
+    }).then(function(dbExamples) {
+      res.json(dbExamples);
+    });
+  });
+
   app.post("/api/createEvent", function(req, res) {
+    console.log("Create Event");
     db.Event.create(req.body).then(function(dbExample) {
       res.json(dbExample);
     });
   });
 
-  app.post("/api/createUser", function(req, res) {
-
+ // Vote for an option
+  app.put("/api/modifyEvent/:id/:option", function(req, res) {
+    console.log("Modify Event" + req.params.id);
   });
 
-
-  app.put("/api/modifyEvent", function(req, res) {
-
+    // Vote for an option
+  app.post("/api/vote/:id/:option", function(req, res) {
+    console.log("Vote: event " + req.params.id + " Option " + req.params.option);
   });
 
-  app.post("/api/newVote", function(req, res) {
-
-
-  });
-
-    // Delete an event by id
-    app.delete("/api/event/:id", function(req, res) {
-
+  // Delete an event by id
+  app.delete("/api/event/:id", function(req, res) {
+    console.log("");
   });
 
   //Login in routes using facebook
@@ -39,27 +44,27 @@ module.exports = function(app) {
       res.render('index', { user: req.user });
     });
 
-    // called using a modal
+    /*
     app.get('/login',
       function(req, res){
         res.render('login');
     });
 
     app.get('/login/facebook',
-      passport.authenticate('facebook'));
+     // passport.authenticate('facebook')
+    );
 
     app.get('/login/facebook/return', 
-      passport.authenticate('facebook', { failureRedirect: '/login' }),
+     // passport.authenticate('facebook', { failureRedirect: '/login' }),
       function(req, res) {
         res.redirect('/');
     });
 
     app.get('/profile',
-      require('connect-ensure-login').ensureLoggedIn(),
+      //require('connect-ensure-login').ensureLoggedIn(),
       function(req, res){
         //in our case it will probably call the create event html
       res.render('profile', { user: req.user });
     });
-
+*/
   }
-  typo
