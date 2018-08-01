@@ -4,7 +4,8 @@
         <div class="row">
           <div class="col-xl-8 mx-auto">
             <img class="img-fluid mb-5 d-block mx-auto" src="@/assets/logo.png" alt="">
-            <h1 class="mb-5">Encuentra tu evento</h1>
+            <h1 class="text-uppercase mb-0 masthead">Encuentra tu evento</h1>
+             <hr>
           </div>
           <div class="col-md-10 col-lg-8 mx-auto">
             <form>
@@ -46,8 +47,14 @@ h6 {
   font-weight: 700;
   font-family: 'Montserrat';
 }
+
+section.masthead h1 {
+  font-size: 3rem;
+  line-height: 3rem;
+}
+
 #Vota {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 3rem;
+  padding-bottom: 14.5rem;
 }
 </style>

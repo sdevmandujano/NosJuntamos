@@ -10,13 +10,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded">Home</a>
+              <a @click="home" class="nav-link py-3 px-0 px-lg-3 rounded">Home</a>
             </li>
             <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded" >Vota</a>
+              <a @click="vota" class="nav-link py-3 px-0 px-lg-3 rounded" >Vota</a>
             </li>
             <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded">Crear Evento</a>
+              <a @click="createEvent" class="nav-link py-3 px-0 px-lg-3 rounded">Crear Evento</a>
             </li>
           </ul>
         </div>
@@ -27,6 +27,17 @@
 <script>
 export default {
   name: 'Navbar',
+  methods: {
+    createEvent () {
+      this.$router.push('event')
+    },
+    home () {
+      this.$router.push('/')
+    },
+    vota () {
+      this.$router.push('vota')
+    }
+  },
   data () {
     return {
 
