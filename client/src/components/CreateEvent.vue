@@ -4,48 +4,35 @@
     <v-flex xs4>
       <panel title="event Metadata">
 
-        <v-text-field
-          label="Description"
-          required
-          :rules="[required]"
-          v-model="event.description"
-        ></v-text-field>
+        <input label="Description" v-model="event.description">
 
-        <v-text-field
-          label="Invites"
-          required
-          :rules="[required]"
-          v-model="event.invite"
-        ></v-text-field>
+        <input label="Invites" v-model="event.invite">
 
-        <v-text-field
+        <input
           label="Date1"
           required
           :rules="[required]"
           v-model="event.Date1"
-        ></v-text-field>
+        >
 
-        <v-text-field
+        <input
           label="Location1"
           required
           :rules="[required]"
           v-model="event.Location1"
-        ></v-text-field>
+        >
 
-        <v-text-field
+        <input
           label="Time1"
           required
           :rules="[required]"
           v-model="event.Time1"
-        ></v-text-field>
-       
-        <v-btn
-          dark
+        >
+        <button
           class="cyan"
           @click="create">
           Create event
-        </v-btn>
-      
+        </button>
         </panel>
       </v-flex> 
     </v-layout>
@@ -88,9 +75,7 @@ export default {
       */
       try {
         await EventsService.post(this.event)
-        this.$router.push({
-          name: 'events'
-        })
+    
       } catch (err) {
         console.log(err)
       }
