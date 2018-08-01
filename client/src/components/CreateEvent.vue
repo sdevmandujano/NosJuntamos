@@ -1,5 +1,5 @@
 <template>
-  <!-- Contact Section -->
+  <!-- Create Event Section -->
     <section id="createEvent">
      <div class="container">
             <div class="row">
@@ -10,28 +10,28 @@
                             <label for="labeldescripcion">Descripcion:</label>
                             <input type="name" class="form-control" id="descripcion" placeholder="Describe el evento a realizar" required>
                         </div>
-                        <div class="card">
-                          <div class="card-header">Fecha Propuesta </div>
+                        <div class="card m-3" v-for="(row, index) in rows" :key=index>
+                          <div class="card-header">Fecha Propuesta {{index+1}} </div>
                           <div class="card-body">
                             <div class="form-group">
                                 <label for="labelfecha">Fecha:</label>
-                                <input type="fecha" class="form-control" id="fecha1" placeholder="Fecha propuesta para el event" required>
+                                <input type="fecha" class="form-control" v-model="row.fecha"  placeholder="Fecha propuesta para el evento" required>
                                 
                             </div>
                             <div class="form-group">
                                 <label for="labelhora">Hora:</label>
-                                <input type="hora" class="form-control" id="hora1" placeholder="Hora propuesta para el event" required>
+                                <input type="hora" class="form-control" v-model="row.hora" placeholder="Hora propuesta para el evento" required>
                             </div>
                             <div class="form-group">
                                 <label for="labelLugar">Lugar:</label>
-                                <input type="lugar" class="form-control" id="form-subject" placeholder="Donde va a ser" required>
+                                <input type="lugar" class="form-control" v-model="row.lugar" placeholder="¿Donde va a ser?" required>
                             </div>
                 
                           </div>
                         </div>
                          <div class="">   
-                            <button type="submit" class="btn btn-primary" @click=add>Agregar otra fecha</button>
-                            <button type="submit" class="btn btn-primary" @click=create>Submit</button>
+                            <button class ="btn btn-primary" @click=addPlace>Agregar fecha</button>
+                            <button type="submit" class="btn btn-primary" @submit.prevent=create>Submit</button>
                         </div>
                     </form>
                 </div>
@@ -47,6 +47,9 @@ import EventsService from '@/services/EventsService'
 export default {
   data () {
     return {
+   
+      rows: [],
+   
       event: {
         description: null,
         invites: 0,
@@ -82,12 +85,20 @@ export default {
       } catch (err) {
         console.log(err)
       }
-    }
+    },
+    addPlace: function() {
+             
+        this.rows.push({
+          fecha: "",
+          hora: "",
+          lugar:""
+      });
+  }
+
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 
 
 
