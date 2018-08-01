@@ -14,7 +14,6 @@
       </div>
     </header>
 
-
 </template>
 
 <script>
@@ -51,7 +50,7 @@ h6 {
 }
 
 header.masthead {
-  padding-top: calc(6rem + 72px);
+  padding-top: 3rem;
   padding-bottom: 6rem;
 }
 
@@ -67,7 +66,7 @@ header.masthead h2 {
 
 @media (min-width: 992px) {
   header.masthead {
-    padding-top: calc(6rem + 106px);
+    padding-top: 3rem;
     padding-bottom: 6rem;
   }
   header.masthead h1 {
