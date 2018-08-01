@@ -8,21 +8,15 @@
           <button @click="createEvent" class="btn btn-outline-light btn-xl mb-4">
             <i class=""></i>
             Crea tu evento gratis!
-          </button>   
+          </button>
           <h5 class="font-weight-light mb-0">Nos Juntamos es una aplicación que nace de la necesidad de organizar un grupo grande de personas con distintas disponibilidades de tiempo. Nuestra aplicación te permite enviarle un enlace a tus amigos con hasta 4 opciones de días y lugares, para que puedan votar, y así decidir dónde y cuándo juntarse!
         Entonces... nos juntamos?</h5>
       </div>
     </header>
-
 </template>
-
 <script>
 
-
 export default {
-  components: {
-    
-  },
   name: 'Index',
   data () {
     return {
@@ -30,7 +24,7 @@ export default {
     }
   },
   methods: {
-    createEvent() {
+    createEvent () {
       this.$router.push('event')
     }
   }
@@ -106,6 +100,5 @@ header.masthead h2 {
   padding: 1rem 1.75rem;
   font-size: 1.25rem;
 }
-
 
 </style>

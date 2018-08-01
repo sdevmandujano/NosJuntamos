@@ -16,8 +16,7 @@
                           <div class="card-body">
                             <div class="form-group">
                                 <label for="labelfecha">Fecha:</label>
-                                <input type="fecha" class="form-control" v-model="row.fecha"  placeholder="Fecha propuesta para el evento" required>
- 
+                                <datepicker class="form-control" v-model="row.fecha" :value="date"></datepicker>
                             </div>
                             <div class="form-group">
                                 <label for="labelhora">Hora:</label>
@@ -32,9 +31,8 @@
                         </div>
                          <div class="">
                             <button class ="btn btn-primary" @click=addPlace>Agregar fecha</button>
-                  
                             <button type="submit" class="btn btn-primary" @submit.prevent=create>Submit</button>
-                        </div>
+                          </div>
                     </form>
                 </div>
             </div>
@@ -44,10 +42,15 @@
 
 <script>
 import EventsService from '@/services/EventsService'
+import Datepicker from 'vuejs-datepicker'
+import Vue from 'vue'
+Vue.use(Datepicker)
 
 export default {
+
   data () {
     return {
+      date: new Date(2016, 9, 18),
       rows: [],
       event: {
         description: null,
@@ -57,6 +60,9 @@ export default {
       error: null,
       required: (value) => !!value || 'Required.'
     }
+  },
+  components: {
+    Datepicker
   },
   methods: {
     async create () {
@@ -84,13 +90,17 @@ export default {
       })
     },
     removePlace: function (index) {
-    this.rows.splice(index, 1)
+      this.rows.splice(index, 1)
     }
   }
 }
 </script>
 
 <style>
+datepicker{
+  width:100%;
+  margin:0;
+}
 section {
   padding: 3rem 0;
 }
