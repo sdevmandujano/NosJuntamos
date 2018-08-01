@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>CREA TU EVENTO</h1>
+
+
+<div class="container mt-3 mt-sm-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form id="form" method="post" v-on:submit="validateForm">
+          <div class="form-group" v-bind:class="{ 'has-warning': attemptSubmit && missingName }">
+            <label class="form-control-label" for="name">Nombre del Evento</label>
+            <input id="name" name="name" class="form-control form-control-warning" type="text" v-model="name">
+            <div class="form-control-feedback" v-if="attemptSubmit && missingName">Campo Requerido.</div>
+          </div><!-- /form-group -->
+
+          <div class="form-group" v-bind:class="{ 'has-warning': attemptSubmit && wrongNumber }">
+            <label class="form-control-label" for="number">Hora</label>
+            <input id="number" name="number" class="form-control form-control-warning" type="text" v-model="number">
+            <div class="form-control-feedback" v-if="attemptSubmit && wrongNumber">Horario entre 1 y 24 horas.</div>
+          </div><!-- /form-group -->
+
+          <button class="btn btn-primary">Crear Evento</button>
+        </form>
+      </div><!-- /col -->
+    </div><!-- /row -->
+  </div><!-- /container -->
+          
+
+</body>
+</html>
+
+
+
+
