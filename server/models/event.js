@@ -2,9 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   var Event = sequelize.define('Event', {
     Description: DataTypes.TEXT,
-    Invites:DataTypes.number,
+    Invites:DataTypes.INTEGER,
     Date1: DataTypes.DATE,
-    //google maps
     Location1: DataTypes.STRING,
     Time1: DataTypes.DATE,
     Date2: DataTypes.DATE,
