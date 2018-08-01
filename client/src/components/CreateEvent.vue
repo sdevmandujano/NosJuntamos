@@ -53,14 +53,9 @@ export default {
       date: new Date(2016, 9, 18),
       rows: [],
       event: {
-        description: " hola",
+        description: 'hola',
         invites: 0,
         rows: [
-          {
-        fecha: ' ',
-        hora: ' ',
-        lugar: ' '
-        }
         ]
       },
       error: null,
@@ -72,17 +67,8 @@ export default {
   },
   methods: {
     async create () {
-      
       this.error = null
-      /*
-       const areAllFieldsFilledIn = Object
-      .keys(this.event)
-      .every(key => !!this.event[key])
-      if (!areAllFieldsFilledIn) {
-      this.error = 'Please fill in all the required fields.'
-      return
-      }
-      */
+      this.event.rows = this.rows
       try {
         await EventsService.post(this.event)
       } catch (err) {
