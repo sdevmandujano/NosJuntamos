@@ -17,10 +17,7 @@ module.exports = function(app) {
 
   app.post("/api/event", function(req, res) {
     console.log("Create Event");
-    db.Event.create(req.body).then(function(dbExample) {
-      //returns event id
-      res.json(dbExample);
-    });
+    
   });
 
  // Modify the event --> this will close the option

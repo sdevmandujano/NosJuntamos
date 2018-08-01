@@ -10,6 +10,7 @@ var bodyParser = require("body-parser");
 // Configure Passport for auth.
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
+var cors = require('cors');
 //var exphbs = require("express-handlebars");
 
 // Configure the Facebook strategy for use by Passport.
@@ -53,6 +54,7 @@ var PORT = process.env.PORT || 8081;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
+app.use(cors());
 
 // Initialize Passport and restore authentication state, if any, from the
 // session.

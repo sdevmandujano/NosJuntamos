@@ -53,9 +53,15 @@ export default {
       date: new Date(2016, 9, 18),
       rows: [],
       event: {
-        description: null,
+        description: " hola",
         invites: 0,
-        rows: []
+        rows: [
+          {
+        fecha: ' ',
+        hora: ' ',
+        lugar: ' '
+        }
+        ]
       },
       error: null,
       required: (value) => !!value || 'Required.'
@@ -66,7 +72,7 @@ export default {
   },
   methods: {
     async create () {
-      alert('creating Event')
+      
       this.error = null
       /*
        const areAllFieldsFilledIn = Object
@@ -78,7 +84,7 @@ export default {
       }
       */
       try {
-        await EventsService.show(this.event)
+        await EventsService.post(this.event)
       } catch (err) {
         console.log(err)
       }
