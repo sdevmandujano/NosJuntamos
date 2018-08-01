@@ -2,19 +2,19 @@ import Api from '@/services/Api'
 
 export default {
   index (search) {
-    return Api().get('songs', {
+    return Api().get('events', {
       params: {
         search: search
       }
     })
   },
   show (songId) {
-    return Api().get(`songs/${songId}`)
+    return Api().get(`events/${event}`)
   },
   post (event) {
-    return Api().post('event', event)
+    return Api().post('events', event)
   },
   put (song) {
-    return Api().put(`songs/${song.id}`, song)
+    return Api().put(`events/${event.id}`, event)
   }
 }

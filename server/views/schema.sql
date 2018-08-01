@@ -2,7 +2,6 @@
 CREATE DATABASE  NosJuntamos;
 USE NosJuntamos;
 
--- Created the table "schools" 
 
 /*
 -- Inserted a set of records into the table
