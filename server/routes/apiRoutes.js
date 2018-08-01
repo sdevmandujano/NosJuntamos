@@ -2,10 +2,9 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/getEvents", function(req, res) {
-    db.User.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
+  app.get("/api/event", function(req, res) {
+    console.log("Get Event");
+
   });
 
   app.get("/api/:event_id/location", function(req, res) {
@@ -16,7 +15,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/createEvent", function(req, res) {
+  app.post("/api/event", function(req, res) {
     console.log("Create Event");
     db.Event.create(req.body).then(function(dbExample) {
       //returns event id

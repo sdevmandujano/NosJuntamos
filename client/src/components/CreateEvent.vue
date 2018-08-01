@@ -31,7 +31,7 @@
                         </div>
                          <div class="">
                             <button class ="btn btn-primary" @click=addPlace>Agregar fecha</button>
-                            <button type="submit" class="btn btn-primary" @submit.prevent=create>Submit</button>
+                            <button class="btn btn-primary" @click=create>Submit</button>
                           </div>
                     </form>
                 </div>
@@ -66,6 +66,7 @@ export default {
   },
   methods: {
     async create () {
+      alert('creating Event')
       this.error = null
       /*
        const areAllFieldsFilledIn = Object
@@ -77,7 +78,7 @@ export default {
       }
       */
       try {
-        await EventsService.post(this.event)
+        await EventsService.show(this.event)
       } catch (err) {
         console.log(err)
       }

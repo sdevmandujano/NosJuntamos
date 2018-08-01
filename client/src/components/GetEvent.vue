@@ -64,7 +64,7 @@ export default {
   name: 'GetEvent',
   data () {
     return {
-
+      event
     }
   }
 }

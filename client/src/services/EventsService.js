@@ -8,13 +8,14 @@ export default {
       }
     })
   },
-  show (songId) {
-    return Api().get(`events/${event}`)
+  show (event) {
+    return Api().get(`/api/event`)
   },
   post (event) {
-    return Api().post('events', event)
+    console.log('sending post')
+    return Api().post('/api/event', event)
   },
   put (song) {
-    return Api().put(`events/${event.id}`, event)
+    return Api().put(`/api/event/${event.id}`, event)
   }
 }
