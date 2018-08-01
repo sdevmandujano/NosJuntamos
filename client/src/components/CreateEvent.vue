@@ -1,41 +1,8 @@
 <template>
-  <v-layout>
+
     <h1>Create Event</h1>
-    <v-flex xs4>
-      <panel title="event Metadata">
+  
 
-        <input label="Description" v-model="event.description">
-
-        <input label="Invites" v-model="event.invite">
-
-        <input
-          label="Date1"
-          required
-          :rules="[required]"
-          v-model="event.Date1"
-        >
-
-        <input
-          label="Location1"
-          required
-          :rules="[required]"
-          v-model="event.Location1"
-        >
-
-        <input
-          label="Time1"
-          required
-          :rules="[required]"
-          v-model="event.Time1"
-        >
-        <button
-          class="cyan"
-          @click="create">
-          Create event
-        </button>
-        </panel>
-      </v-flex> 
-    </v-layout>
 </template>
 
 <script>
