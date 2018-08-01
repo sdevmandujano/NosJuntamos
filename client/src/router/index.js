@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Index from '@/components/Index'
+import CreateEvent from '@/components/CreateEvent'
+import GetEvent from '@/components/GetEvent'
 
 Vue.use(Router)
 
@@ -8,8 +10,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Index',
+      component: Index
+    },
+    {
+      path: '/event',
+      name: 'CreateEvent',
+      component: CreateEvent
+    },
+    {
+      path: '/event/:id',
+      name: 'GetEvent',
+      component: GetEvent
     }
   ]
 })
