@@ -10,7 +10,7 @@ module.exports = function(app) {
 
   app.get("/api/:event_id/location", function(req, res) {
     db.User.findAll({
-      
+      //search for the location and return
     }).then(function(dbExamples) {
       res.json(dbExamples);
     });
@@ -19,11 +19,12 @@ module.exports = function(app) {
   app.post("/api/createEvent", function(req, res) {
     console.log("Create Event");
     db.Event.create(req.body).then(function(dbExample) {
+      //returns event id
       res.json(dbExample);
     });
   });
 
- // Vote for an option
+ // Modify the event --> this will close the option
   app.put("/api/modifyEvent/:id/:option", function(req, res) {
     console.log("Modify Event" + req.params.id);
   });
@@ -35,7 +36,7 @@ module.exports = function(app) {
 
   // Delete an event by id
   app.delete("/api/event/:id", function(req, res) {
-    console.log("");
+    console.log("Delete an event");
   });
 
   //Login in routes using facebook
