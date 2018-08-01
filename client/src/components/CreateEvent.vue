@@ -1,7 +1,43 @@
 <template>
-
-    <h1>Create Event</h1>
-  
+  <!-- Contact Section -->
+    <section id="createEvent">
+     <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto transbox">
+                    <h2>Crea Tu Evento</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="labeldescripcion">Descripcion:</label>
+                            <input type="name" class="form-control" id="descripcion" placeholder="Describe el evento a realizar" required>
+                        </div>
+                        <div class="card">
+                          <div class="card-header">Fecha Propuesta </div>
+                          <div class="card-body">
+                            <div class="form-group">
+                                <label for="labelfecha">Fecha:</label>
+                                <input type="fecha" class="form-control" id="fecha1" placeholder="Fecha propuesta para el event" required>
+                                
+                            </div>
+                            <div class="form-group">
+                                <label for="labelhora">Hora:</label>
+                                <input type="hora" class="form-control" id="hora1" placeholder="Hora propuesta para el event" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="labelLugar">Lugar:</label>
+                                <input type="lugar" class="form-control" id="form-subject" placeholder="Donde va a ser" required>
+                            </div>
+                
+                          </div>
+                        </div>
+                         <div class="">   
+                            <button type="submit" class="btn btn-primary" @click=add>Agregar otra fecha</button>
+                            <button type="submit" class="btn btn-primary" @click=create>Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </template>
 
@@ -52,6 +88,28 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
 
+
+
+<style>
+section {
+  padding: 3rem 0;
+}
+
+section h2 {
+  font-size: 2.25rem;
+  line-height: 2rem;
+}
+
+@media (min-width: 992px) {
+  section h2 {
+    font-size: 3rem;
+    line-height: 2.5rem;
+  }
+}
+
+
+form .row:first-child .floating-label-form-group {
+  border-top: 5px solid #e9ecef;
+}
 </style>
