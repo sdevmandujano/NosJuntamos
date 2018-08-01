@@ -1,9 +1,10 @@
+©
 <template>
   <!-- Create Event Section -->
     <section id="createEvent">
      <div class="container">
             <div class="row">
-                <div class="col-lg-8 mx-auto transbox">
+                <div class="col-lg-8 mx-auto">
                     <h2>Crea Tu Evento</h2>
                     <form>
                         <div class="form-group">
@@ -16,7 +17,7 @@
                             <div class="form-group">
                                 <label for="labelfecha">Fecha:</label>
                                 <input type="fecha" class="form-control" v-model="row.fecha"  placeholder="Fecha propuesta para el evento" required>
-                                
+ 
                             </div>
                             <div class="form-group">
                                 <label for="labelhora">Hora:</label>
@@ -29,7 +30,7 @@
                             <button class ="btn btn-primary" @click=removePlace(index)>Eliminar fecha</button>
                           </div>
                         </div>
-                         <div class="">   
+                         <div class="">
                             <button class ="btn btn-primary" @click=addPlace>Agregar fecha</button>
                   
                             <button type="submit" class="btn btn-primary" @submit.prevent=create>Submit</button>
@@ -39,7 +40,6 @@
             </div>
         </div>
     </section>
-
 </template>
 
 <script>
@@ -48,9 +48,7 @@ import EventsService from '@/services/EventsService'
 export default {
   data () {
     return {
-   
       rows: [],
-   
       event: {
         description: null,
         invites: 0,
@@ -62,9 +60,8 @@ export default {
   },
   methods: {
     async create () {
-       this.error = null
+      this.error = null
       /*
-  
        const areAllFieldsFilledIn = Object
       .keys(this.event)
       .every(key => !!this.event[key])
@@ -75,28 +72,23 @@ export default {
       */
       try {
         await EventsService.post(this.event)
-    
       } catch (err) {
         console.log(err)
       }
     },
-    addPlace: function() {
-        this.rows.push({
-          fecha: "",
-          hora: "",
-          lugar:""
-      });
-  },
-  removePlace: function(index) {
-      this.rows.splice(index, 1);
-  },
-
+    addPlace: function () {
+      this.rows.push({
+        fecha: ' ',
+        hora: ' ',
+        lugar: ' '
+      })
+    },
+    removePlace: function (index) {
+    this.rows.splice(index, 1)
+    }
   }
 }
 </script>
-
-
-
 
 <style>
 section {
@@ -114,7 +106,6 @@ section h2 {
     line-height: 2.5rem;
   }
 }
-
 
 form .row:first-child .floating-label-form-group {
   border-top: 5px solid #e9ecef;

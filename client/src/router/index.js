@@ -22,11 +22,6 @@ export default new Router({
       path: '/event/:id',
       name: 'GetEvent',
       component: GetEvent
-    },
-    {
-      path: '/events',
-      name: 'events',
-      component: event
     }
   ]
 })

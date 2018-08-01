@@ -18,11 +18,11 @@
 </template>
 
 <script>
-import Instructions from '@/components/Instructions'
+
 
 export default {
   components: {
-    Instructions
+    
   },
   name: 'Index',
   data () {
