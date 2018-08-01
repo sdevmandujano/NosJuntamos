@@ -26,11 +26,12 @@
                                 <label for="labelLugar">Lugar:</label>
                                 <input type="lugar" class="form-control" v-model="row.lugar" placeholder="¿Donde va a ser?" required>
                             </div>
-                
+                            <button class ="btn btn-primary" @click=removePlace(index)>Eliminar fecha</button>
                           </div>
                         </div>
                          <div class="">   
                             <button class ="btn btn-primary" @click=addPlace>Agregar fecha</button>
+                  
                             <button type="submit" class="btn btn-primary" @submit.prevent=create>Submit</button>
                         </div>
                     </form>
@@ -53,15 +54,7 @@ export default {
       event: {
         description: null,
         invites: 0,
-        Date1: null,
-        Location1: null,
-        Time1: null,
-        Date2: null,
-        Location2: null,
-        Time2: null,
-        Date3: null,
-        Location3: null,
-        Time3: null
+        rows: []
       },
       error: null,
       required: (value) => !!value || 'Required.'
@@ -69,8 +62,9 @@ export default {
   },
   methods: {
     async create () {
+       this.error = null
       /*
-      this.error = null
+  
        const areAllFieldsFilledIn = Object
       .keys(this.event)
       .every(key => !!this.event[key])
@@ -87,13 +81,15 @@ export default {
       }
     },
     addPlace: function() {
-             
         this.rows.push({
           fecha: "",
           hora: "",
           lugar:""
       });
-  }
+  },
+  removePlace: function(index) {
+      this.rows.splice(index, 1);
+  },
 
   }
 }
