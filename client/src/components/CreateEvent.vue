@@ -9,28 +9,28 @@
                     <form>
                         <div class="form-group">
                             <label for="labeldescripcion">Descripcion:</label>
-                            <input type="name" class="form-control" id="descripcion" placeholder="Describe el evento a realizar" required>
+                            <input type="name" class="form-control" v-model="event.description" placeholder="Describe el evento a realizar" required>
                         </div>
                         <div class="card m-3" v-for="(row, index) in rows" :key=index>
                           <div class="card-header">Fecha Propuesta {{index+1}} </div>
                           <div class="card-body">
                             <div class="form-group">
                                 <label for="labelfecha">Fecha:</label>
-                                <datepicker class="form-control" v-model="row.fecha" :value="date"></datepicker>
+                                <datepicker class="form-control" v-model="rows.fecha"  :rules="[required]" required></datepicker>
                             </div>
                             <div class="form-group">
                                 <label for="labelhora">Hora:</label>
-                                <input type="hora" class="form-control" v-model="row.hora" placeholder="Hora propuesta para el evento" required>
+                                <input type="hora" class="form-control" v-model="rows.hora" :rules="[required]" required>
                             </div>
                             <div class="form-group">
                                 <label for="labelLugar">Lugar:</label>
-                                <input type="lugar" class="form-control" v-model="row.lugar" placeholder="¿Donde va a ser?" required>
+                                <input type="lugar" class="form-control" v-model="rows.lugar" :rules="[required]" required>
                             </div>
                             <button class ="btn btn-primary" @click=removePlace(index)>Eliminar fecha</button>
                           </div>
                         </div>
                          <div class="">
-                            <button class ="btn btn-primary" @click=addPlace>Agregar fecha</button>
+                            <button class ="btn btn-primary" @click.prevent=addPlace>Agregar fecha</button>
                             <button class="btn btn-primary" @click=create>Submit</button>
                           </div>
                     </form>
@@ -53,7 +53,7 @@ export default {
       date: new Date(2016, 9, 18),
       rows: [],
       event: {
-        description: 'hola',
+        description: null,
         rows: [
         ]
       },
@@ -66,8 +66,19 @@ export default {
   },
   methods: {
     async create () {
+      console.log(this.rows.fecha)
       this.error = null
       this.event.rows = this.rows
+
+      if (this.rows.length !== 0) {
+        const areAllFieldsFilledIn = Object
+          .keys(this.rows)
+          .every(key => !!this.rows[key])
+        if (!areAllFieldsFilledIn) {
+          this.error = 'Please fill in all the required fields.'
+          return
+        }
+      }
       try {
         await EventsService.post(this.event)
         this.$router.push('/event/:id')
@@ -77,9 +88,9 @@ export default {
     },
     addPlace: function () {
       this.rows.push({
-        fecha: ' ',
-        hora: ' ',
-        lugar: ' '
+        fecha: null,
+        hora: null,
+        lugar: null
       })
     },
     removePlace: function (index) {

@@ -18,14 +18,9 @@ module.exports = function(app) {
 
   app.post("/api/event", function(req, res) {
     console.log("Create Event");
-    console.log(req.body.rows.length);
-    db.Event.create([
-      "Description"
-    ], [
-      req.body.description
-    ], function(createdEvent) {
-      console.log(createdEvent.insertId);
-      res.json({ id: createdEvent.insertId });
+    console.log(req.body.description);
+    db.Event.create(req.body).then(function(dbExample) {
+      res.json(dbExample);
     });
   });
 

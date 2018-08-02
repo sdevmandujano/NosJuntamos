@@ -1,6 +1,6 @@
 -- Created the DB "NosJuntamos" (only works on local connections)
-CREATE DATABASE  NosJuntamos;
-USE NosJuntamos;
+CREATE DATABASE  nosjuntamos;
+USE nosjuntamos;
 
 
 /*
