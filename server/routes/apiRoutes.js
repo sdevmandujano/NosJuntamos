@@ -3,8 +3,16 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all examples
   app.get("/api/event", function(req, res) {
-    console.log("Get Event");
-
+    console.log("Get Event " + req.params.id);
+    
+    db.Event.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function(dbPost) {
+        res.json(dbPost);
+      });
 
   });
 
