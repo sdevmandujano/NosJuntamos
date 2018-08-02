@@ -1,4 +1,4 @@
-©
+
 <template>
   <!-- Create Event Section -->
     <section id="createEvent">
@@ -16,15 +16,15 @@
                           <div class="card-body">
                             <div class="form-group">
                                 <label for="labelfecha">Fecha:</label>
-                                <datepicker class="form-control" v-model="rows.fecha"  :rules="[required]" required></datepicker>
+                                <datepicker class="form-control" v-model="rows[index].fecha"  :rules="[required]" required></datepicker>
                             </div>
                             <div class="form-group">
                                 <label for="labelhora">Hora:</label>
-                                <input type="hora" class="form-control" v-model="rows.hora" :rules="[required]" required>
+                                <input type="hora" class="form-control" v-model="rows[index].hora" :rules="[required]" required>
                             </div>
                             <div class="form-group">
                                 <label for="labelLugar">Lugar:</label>
-                                <input type="lugar" class="form-control" v-model="rows.lugar" :rules="[required]" required>
+                                <input type="lugar" class="form-control" v-model="rows[index].lugar" :rules="[required]" required>
                             </div>
                             <button class ="btn btn-primary" @click=removePlace(index)>Eliminar fecha</button>
                           </div>
@@ -66,7 +66,7 @@ export default {
   },
   methods: {
     async create () {
-      console.log(this.rows.fecha)
+      console.log(this.rows.toString())
       this.error = null
       this.event.rows = this.rows
 
@@ -80,8 +80,8 @@ export default {
         }
       }
       try {
-        await EventsService.post(this.event)
-        this.$router.push('/event/:id')
+        var eventid = (await EventsService.post(this.event)).data.id
+        this.$router.push('event/:' + eventid)
       } catch (err) {
         console.log(err)
       }

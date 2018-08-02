@@ -12,10 +12,7 @@ export default {
     return Api().get(`/api/event`)
   },
   post (event) {
-    Api().post(`/api/event`, event).then(function (response) {
-      console.log(response)
-      return response
-    })
+    return Api().post(`/api/event`, event)
   },
   put (song) {
     return Api().put(`/api/event/${event.id}`, event)
