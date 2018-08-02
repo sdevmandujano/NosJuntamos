@@ -54,7 +54,6 @@ export default {
       rows: [],
       event: {
         description: 'hola',
-        invites: 0,
         rows: [
         ]
       },
@@ -71,6 +70,7 @@ export default {
       this.event.rows = this.rows
       try {
         await EventsService.post(this.event)
+        this.$router.push('/event/:id')
       } catch (err) {
         console.log(err)
       }

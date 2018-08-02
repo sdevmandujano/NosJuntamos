@@ -10,14 +10,23 @@ module.exports = function(app) {
   app.get("/api/:event_id/location", function(req, res) {
     db.User.findAll({
       //search for the location and return
-    }).then(function(dbExamples) {
-      res.json(dbExamples);
+    }).then(function(createdEvent) {
+      console.log(createdEvent.id);
+      res.json(createdEvent.id);
     });
   });
 
   app.post("/api/event", function(req, res) {
     console.log("Create Event");
-    
+    console.log(req.body.rows.length);
+    db.Event.create([
+      "Description"
+    ], [
+      req.body.description
+    ], function(createdEvent) {
+      console.log(createdEvent.insertId);
+      res.json({ id: createdEvent.insertId });
+    });
   });
 
  // Modify the event --> this will close the option
