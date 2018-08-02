@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/event", function(req, res) {
+  app.get("/api/getevent/:id", function(req, res) {
     console.log("Get Event " + req.params.id);
     
     db.Event.findOne({
@@ -14,15 +14,6 @@ module.exports = function(app) {
         res.json(dbPost);
       });
 
-  });
-
-  app.get("/api/:event_id/location", function(req, res) {
-    db.User.findAll({
-      //search for the location and return
-    }).then(function(createdEvent) {
-      console.log(createdEvent.id);
-      res.json(createdEvent.id);
-    });
   });
 
   app.post("/api/event", function(req, res) {

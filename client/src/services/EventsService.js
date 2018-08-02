@@ -9,7 +9,7 @@ export default {
     })
   },
   show (id) {
-    return Api().get('/apì/event', {params: {id: id}})
+    return Api().get('/apì/getevent', {params: {id: id}})
   },
   post (event) {
     return Api().post('/api/event', event)
