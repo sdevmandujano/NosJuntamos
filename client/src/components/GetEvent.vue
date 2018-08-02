@@ -2,7 +2,7 @@
     <section id="Evento">
         <!-- Title -->
 
-          <div class="container">
+          <div class="container mx-auto text-center">
             <div class="row mb-3">
               <div class="col-lg-8 mx-auto">
                     <h2>Evento</h2>
@@ -11,8 +11,8 @@
             </div>
 
          <!-- Event  -->
-          <div class="row mb-5">
-            <div class="col-sm-4">
+          <div class="row mb-5 mx-auto">
+            <div class="col-lg-4 col-md-4 col-10 mb-2 mx-auto ">
               <div class="card text-white bg-dark">
                 <div class="card-body">
                   <h5 class="card-title">Fecha 1</h5>
@@ -21,7 +21,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-lg-4 col-md-4 col-10 mb-2 mx-auto ">
               <div class="card text-white bg-dark">
                 <div class="card-body">
                   <h5 class="card-title">Fecha 2</h5>
@@ -30,7 +30,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-lg-4 col-md-4 col-10 mb-2 mx-auto ">
               <div class="card text-white bg-dark">
                 <div class="card-body">
                   <h5 class="card-title">Fecha 3</h5>
