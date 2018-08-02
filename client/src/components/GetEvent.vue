@@ -5,7 +5,7 @@
           <div class="container mx-auto text-center">
             <div class="row mb-3">
               <div class="col-lg-8 mx-auto">
-                    <h2>Evento</h2>
+                    <h2>Evento {{ id }}</h2>
                     <h5>Descripcion</h5>
                   </div>
             </div>
@@ -58,13 +58,26 @@
 <script>
 import Vue from 'vue'
 import bars from 'vuebars'
+import EventsService from '@/services/EventsService'
+
 Vue.use(bars)
 
 export default {
   name: 'GetEvent',
   data () {
     return {
+      id: null,
       event
+    }
+  },
+  created () {
+    this.id = this.$route.params.id
+  },
+  mounted () {
+    try {
+      this.event = (EventsService.show(this.id)).data
+    } catch (err) {
+      console.log(err)
     }
   }
 }

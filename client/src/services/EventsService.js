@@ -4,15 +4,15 @@ export default {
   index (search) {
     return Api().get('events', {
       params: {
-        search: search
+        id: search
       }
     })
   },
-  show (event) {
-    return Api().get(`/api/event`)
+  show (id) {
+    return Api().get('/apì/event', {params: {id: id}})
   },
   post (event) {
-    return Api().post(`/api/event`, event)
+    return Api().post('/api/event', event)
   },
   put (song) {
     return Api().put(`/api/event/${event.id}`, event)

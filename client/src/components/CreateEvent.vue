@@ -32,6 +32,7 @@
                          <div class="">
                             <button class ="btn btn-primary" @click.prevent=addPlace>Agregar fecha</button>
                             <button class="btn btn-primary" @click=create>Submit</button>
+                            <div>{{rows}}</div>
                           </div>
                     </form>
                 </div>
@@ -54,8 +55,7 @@ export default {
       rows: [],
       event: {
         description: null,
-        rows: [
-        ]
+        rows: []
       },
       error: null,
       required: (value) => !!value || 'Required.'
@@ -81,7 +81,7 @@ export default {
       }
       try {
         var eventid = (await EventsService.post(this.event)).data.id
-        this.$router.push('event/:' + eventid)
+        this.$router.push({name: 'GetEvent', params: { id: eventid }})
       } catch (err) {
         console.log(err)
       }
