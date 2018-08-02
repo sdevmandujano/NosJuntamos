@@ -5,6 +5,7 @@ module.exports = function(app) {
   app.get("/api/event", function(req, res) {
     console.log("Get Event");
 
+
   });
 
   app.get("/api/:event_id/location", function(req, res) {
