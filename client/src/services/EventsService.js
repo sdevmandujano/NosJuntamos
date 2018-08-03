@@ -14,11 +14,5 @@ export default {
   },
   post (event) {
     return Api().post('/api/event', event)
-  },
-  put (event) {
-    return Api().put(`/api/events/${event.id}`, event)
-  },
-  vote (event) {
-    return Api().put(`/api/vote/${event.id}/${event.option.id}`)
   }
 }

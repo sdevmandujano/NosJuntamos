@@ -9,9 +9,10 @@ exports.getEvent = function(req, res) {
         }
     })
     .then(function(event) {
+        console.log(event.dataValues);
         return res.status(200).send(event);
-    }, function (err) {
-        return res.status(500).send(err);
+    }, function(err) {
+        return res.status(500).send(err)
     })
 }
 

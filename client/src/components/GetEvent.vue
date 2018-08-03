@@ -5,42 +5,27 @@
           <div class="container mx-auto text-center">
             <div class="row mb-3">
               <div class="col-lg-8 mx-auto">
-                    <h2>Evento {{ id }}</h2>
-                    <h5>Descripcion</h5>
+                    <h2>Evento: {{ name }} </h2>
+                    <h5>Descripcion: {{ description }} (id: {{ id }} ) </h5>
                   </div>
             </div>
 
          <!-- Event  -->
+        <h3 class="text-left">Vota por tu opcion favorita: </h3>
           <div class="row mb-5 mx-auto">
-            <div class="col-lg-4 col-md-4 col-10 mb-2 mx-auto ">
+            <div v-for="(option, index) in options" :key=index class="col-lg-4 col-md-4 col-10 mb-2 mx-auto ">
               <div class="card text-white bg-dark">
                 <div class="card-body">
-                  <h5 class="card-title">Fecha 1</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-primary">Vota!</a>
+                  <h5 class="card-title">Opcion {{index + 1 }}</h5>
+                   <!-- este primer span tiene que cambiar a un link a maps  -->
+                  <p class="card-text">Lugar: {{options[index].place}}</p>
+                  <p class="card-text">Fecha: {{options[index].date}}</p>
+                  <p class="card-text">Hora: {{options[index].hora}}</p>
+                  <a @click.prevent=addVote(index) class="btn btn-primary">Vota!</a>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-10 mb-2 mx-auto ">
-              <div class="card text-white bg-dark">
-                <div class="card-body">
-                  <h5 class="card-title">Fecha 2</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-primary">Vota!</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-10 mb-2 mx-auto ">
-              <div class="card text-white bg-dark">
-                <div class="card-body">
-                  <h5 class="card-title">Fecha 3</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-primary">Vota!</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
+        </div>
       </div>
       <div class="card col-10 mx-auto">
         <div class="card-header">Resultados</div>
@@ -59,6 +44,7 @@
 import Vue from 'vue'
 import bars from 'vuebars'
 import EventsService from '@/services/EventsService'
+import OptionsService from '@/services/OptionsService'
 
 Vue.use(bars)
 
@@ -67,16 +53,28 @@ export default {
   data () {
     return {
       id: null,
-      event
+      name: null,
+      description: null,
+      event,
+      options: []
+    }
+  },
+  methods: {
+    async addVote (index) {
+      (await OptionsService.putOption(this.id, this.options[index].id))
     }
   },
   created () {
     this.id = this.$route.params.id
   },
-  mounted () {
+  async mounted () {
     try {
-      alert(this.id)
-      this.event = (EventsService.show(this.id)).data
+      this.event = (await EventsService.show(this.id)).data
+      this.description = this.event.description
+      this.name = this.event.name
+
+      // get the options
+      this.options = (await OptionsService.showOptions(this.id)).data
     } catch (err) {
       console.log(err)
     }

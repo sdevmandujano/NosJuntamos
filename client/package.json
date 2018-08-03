@@ -21,9 +21,11 @@
     "vue-datetime": "^1.0.0-beta.6",
     "vue-router": "^3.0.1",
     "vue-time-picker": "^0.2.6",
+    "vue2-timepicker": "^0.1.4",
     "vuebars": "^0.1.1",
     "vuejs-datepicker": "^1.5.2",
     "vuejs-datetimepicker": "^1.1.7",
+    "vuemit": "^1.0.9",
     "vuex": "^3.0.1",
     "vuex-persistedstate": "^2.5.4",
     "weekstart": "^1.0.0"
