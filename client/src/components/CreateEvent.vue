@@ -103,6 +103,8 @@ export default {
     },
     removePlace: function (index) {
       this.rows.splice(index, 1)
+    },
+    getLatlog: function () {
     }
   }
 }

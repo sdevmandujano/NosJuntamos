@@ -62,7 +62,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Routes
-require("./routes/apiRoutes")(app);
+require("./routes/api-event-routes")(app);
+require("./routes/api-option-routes")(app);
 
 var syncOptions = { force: false };
 
