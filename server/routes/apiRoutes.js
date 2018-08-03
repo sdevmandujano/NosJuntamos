@@ -1,10 +1,8 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
+  // Get event by id
   app.get("/api/getevent/:id", function(req, res) {
-    console.log("Get Event " + req.params.id);
-    
     db.Event.findOne({
       where: {
         id: req.params.id
@@ -15,9 +13,9 @@ module.exports = function(app) {
       });
 
   });
-
+  
+  // Post a new
   app.post("/api/event", function(req, res) {
-    console.log("Create Event");
     console.log(req.body.description);
     db.Event.create(req.body).then(function(dbExample) {
       res.json(dbExample);
@@ -39,13 +37,14 @@ module.exports = function(app) {
     console.log("Delete an event");
   });
 
+   /*
   //Login in routes using facebook
     app.get('/',
       function(req, res) {
       res.render('index', { user: req.user });
     });
 
-    /*
+   
     app.get('/login',
       function(req, res){
         res.render('login');

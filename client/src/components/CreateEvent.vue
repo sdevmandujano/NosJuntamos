@@ -7,6 +7,10 @@
                 <div class="col-lg-8 mx-auto">
                     <h2>Crea Tu Evento</h2>
                     <form>
+                      <div class="form-group">
+                            <label for="labeldescripcion">Nombre:</label>
+                            <input type="name" class="form-control" v-model="event.name" placeholder="Nombre del evento" required>
+                        </div>
                         <div class="form-group">
                             <label for="labeldescripcion">Descripcion:</label>
                             <input type="name" class="form-control" v-model="event.description" placeholder="Describe el evento a realizar" required>
@@ -20,7 +24,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="labelhora">Hora:</label>
-                                <input type="hora" class="form-control" v-model="rows[index].hora" :rules="[required]" required>
+                                <datetime class="form-control" format="H:i:s"  name='dob'></datetime>
                             </div>
                             <div class="form-group">
                                 <label for="labelLugar">Lugar:</label>
@@ -44,8 +48,10 @@
 <script>
 import EventsService from '@/services/EventsService'
 import Datepicker from 'vuejs-datepicker'
+import datetime from 'vuejs-datetimepicker'
 import Vue from 'vue'
 Vue.use(Datepicker)
+Vue.use(datetime)
 
 export default {
 
@@ -54,6 +60,7 @@ export default {
       date: new Date(2016, 9, 18),
       rows: [],
       event: {
+        name: null,
         description: null,
         rows: []
       },
@@ -62,7 +69,8 @@ export default {
     }
   },
   components: {
-    Datepicker
+    Datepicker,
+    datetime
   },
   methods: {
     async create () {

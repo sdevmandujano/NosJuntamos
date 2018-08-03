@@ -75,6 +75,7 @@ export default {
   },
   mounted () {
     try {
+      alert(this.id)
       this.event = (EventsService.show(this.id)).data
     } catch (err) {
       console.log(err)

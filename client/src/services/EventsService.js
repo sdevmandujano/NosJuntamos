@@ -9,12 +9,16 @@ export default {
     })
   },
   show (id) {
-    return Api().get('/apì/getevent', {params: {id: id}})
+    console.log(id)
+    return Api().get(`/api/events/${id}`)
   },
   post (event) {
     return Api().post('/api/event', event)
   },
-  put (song) {
-    return Api().put(`/api/event/${event.id}`, event)
+  put (event) {
+    return Api().put(`/api/events/${event.id}`, event)
+  },
+  vote (event) {
+    return Api().put(`/api/vote/${event.id}/${event.option.id}`)
   }
 }
