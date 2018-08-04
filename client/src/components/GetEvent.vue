@@ -6,13 +6,13 @@
             <div class="row mb-3">
               <div class="col-lg-8 mx-auto">
                     <h2>Evento: {{ name }} </h2>
-                    <h5>vinculo: <a class="text-left"> {{url}}</a> </h5>
-                    <h5>Descripcion: {{ description }} (id: {{ id }} ) </h5>
+                    <h5>Vínculo: <a class="text-left"> {{ url }}</a> </h5>
+                    <h5>Descripción: {{ description }} (id: {{ id }} ) </h5>
                   </div>
             </div>
 
          <!-- Event  -->
-        <a class="text-left">Elige una opcion</a>
+        <div class="text-left">Elige una opción</div>
           <div class="row mb-5 mx-auto">
             <div v-for="(option, index) in options" :key=index class="col-lg-4 col-md-4 col-10 mb-2 mx-auto ">
               <div class="card text-white bg-dark" >
