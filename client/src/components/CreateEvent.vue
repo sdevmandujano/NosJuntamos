@@ -83,23 +83,23 @@ export default {
     async create () {
       this.error = null
       try {
-        console.log(this.rows.length)
         if (this.rows.length < 2) {
           alert('Agrega por lo menos 2 fechas.')
           return
         } else {
           const areAllFieldsFilledIn = Object
-            .keys(this.rows)
-            .every(key => !!this.rows[key])
+            .keys(this.event)
+            .every(key => !!this.event[key])
           if (!areAllFieldsFilledIn) {
             // change this for modal
             alert('Por favor llena los campos faltantes')
             return
+          } else {
+            var eventid = (await EventsService.post(this.event)).data.id
+            // we need to sort the this.row object before sending.(or in the back end?)
+            await OptionsService.postOptions(eventid, this.rows)
+            this.$router.push({name: 'GetEvent', params: { id: eventid }})
           }
-          var eventid = (await EventsService.post(this.event)).data.id
-          // we need to sort the this.row object before sending.(or in the back end?)
-          await OptionsService.postOptions(eventid, this.rows)
-          this.$router.push({name: 'GetEvent', params: { id: eventid }})
         }
       } catch (err) {
         console.log(err)

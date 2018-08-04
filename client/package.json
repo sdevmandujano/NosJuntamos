@@ -19,6 +19,7 @@
     "vue": "^2.5.2",
     "vue-clock-picker": "^0.4.2",
     "vue-datetime": "^1.0.0-beta.6",
+    "vue-goodshare": "^0.9.3",
     "vue-router": "^3.0.1",
     "vue-time-picker": "^0.2.6",
     "vue2-timepicker": "^0.1.4",

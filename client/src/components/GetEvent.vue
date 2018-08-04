@@ -6,7 +6,7 @@
             <div class="row mb-3">
               <div class="col-lg-8 mx-auto">
                     <h2>Evento: {{ name }} </h2>
-                    <h5>Vínculo: <a class="text-left"> {{ url }}</a> </h5>
+                    <h5>Vínculo: <a class="text-left"> {{ url }}</a><vue-goodshare-facebook button_design="outline" has_icon title_social="Facebook"></vue-goodshare-facebook></h5>
                     <h5>Descripción: {{ description }} (id: {{ id }} ) </h5>
                   </div>
             </div>
@@ -45,6 +45,7 @@
 <script>
 import Vue from 'vue'
 import bars from 'vuebars'
+import VueGoodshareFacebook from 'vue-goodshare/src/providers/Facebook.vue'
 import EventsService from '@/services/EventsService'
 import OptionsService from '@/services/OptionsService'
 
@@ -62,6 +63,9 @@ export default {
       options: [],
       url: window.location.href
     }
+  },
+  components: {
+    VueGoodshareFacebook
   },
   methods: {
     async addVote (index) {
