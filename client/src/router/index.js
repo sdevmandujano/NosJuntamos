@@ -4,6 +4,7 @@ import Index from '@/components/Index'
 import CreateEvent from '@/components/CreateEvent'
 import GetEvent from '@/components/GetEvent'
 import Vota from '@/components/Vota'
+import Success from '@/components/VotoExitoso'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/vota',
       name: 'vota',
       component: Vota
+    },
+    {
+      path: '/votoregistrado',
+      name: 'votoexitoso',
+      component: Success
     }
   ]
 })

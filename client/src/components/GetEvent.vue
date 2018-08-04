@@ -6,12 +6,13 @@
             <div class="row mb-3">
               <div class="col-lg-8 mx-auto">
                     <h2>Evento: {{ name }} </h2>
+                    <h5>vinculo: <a class="text-left"> {{url}}</a> </h5>
                     <h5>Descripcion: {{ description }} (id: {{ id }} ) </h5>
                   </div>
             </div>
 
          <!-- Event  -->
-        <h3 class="text-left">Vota por tu opcion favorita: </h3>
+        <a class="text-left">Elige una opcion</a>
           <div class="row mb-5 mx-auto">
             <div v-for="(option, index) in options" :key=index class="col-lg-4 col-md-4 col-10 mb-2 mx-auto ">
               <div class="card text-white bg-dark">
@@ -56,12 +57,14 @@ export default {
       name: null,
       description: null,
       event,
-      options: []
+      options: [],
+      url: window.location.href
     }
   },
   methods: {
     async addVote (index) {
       (await OptionsService.putOption(this.id, this.options[index].id))
+      this.$router.push({name: 'votoexitoso'})
     }
   },
   created () {

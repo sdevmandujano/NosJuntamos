@@ -21,21 +21,21 @@
                             <div class="row">
                               <div class="col-6">
                                 <label for="labelfecha">Fecha:</label>
-                                <datepicker v-model="rows[index].fecha" :format="format"  :rules="[required]" required></datepicker>
+                                <datepicker v-model="rows[index].date" :format="format"  :rules="[required]" required></datepicker>
                               </div>
                               <div class="col-6">
                                 <div class="row">
                                 <label for="labelhora">Hora:</label>
                                 </div>
                                 <div class="row">
-                                <vue-timepicker v-model="rows[index].hora" format="HH:mm"></vue-timepicker>
+                                <vue-timepicker v-model="rows[index].time" format="HH:mm"></vue-timepicker>
                                 </div>
                               </div>
                             </div>
                             <div class="row mt-2">
                               <div class="col-12 mb-3">
                                 <label for="labelLugar">Lugar:</label>
-                                <input type="lugar" class="form-control" v-model="rows[index].lugar" :rules="[required]" required>
+                                <input type="lugar" class="form-control" v-model="rows[index].place" :rules="[required]" required>
                               </div>
                             </div>
                             <button class ="btn btn-primary" @click=removePlace(index)>Eliminar fecha</button>
@@ -83,42 +83,41 @@ export default {
   methods: {
     async create () {
       this.error = null
-
-      if (this.rows.length !== 0) {
-        const areAllFieldsFilledIn = Object
-          .keys(this.rows)
-          .every(key => !!this.rows[key])
-        if (!areAllFieldsFilledIn) {
-          // change this for modal
-          alert('Please fill in all the required fields.')
+      try {
+        console.log(this.rows.length)
+        if (this.rows.length < 2) {
+          alert('Agrega por lo menos 2 fechas.')
           return
-        }
-        try {
+        } else {
+          const areAllFieldsFilledIn = Object
+            .keys(this.rows)
+            .every(key => !!this.rows[key])
+          if (!areAllFieldsFilledIn) {
+            // change this for modal
+            alert('Por favor llena los campos faltantes')
+            return
+          }
           var eventid = (await EventsService.post(this.event)).data.id
           // we need to sort the this.row object before sending.(or in the back end?)
           await OptionsService.postOptions(eventid, this.rows)
           this.$router.push({name: 'GetEvent', params: { id: eventid }})
-        } catch (err) {
-          console.log(err)
         }
+      } catch (err) {
+        console.log(err)
       }
     },
     addPlace: function () {
       this.rows.push({
-        fecha: null,
-        hora: {
+        date: null,
+        time: {
           HH: null,
           mm: null
         },
-        lugar: null,
-        vote: 0
+        place: null
       })
     },
     removePlace: function (index) {
       this.rows.splice(index, 1)
-    },
-    formatRows: function () {
-
     }
   }
 }

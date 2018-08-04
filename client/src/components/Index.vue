@@ -45,7 +45,7 @@ h6 {
 
 header.masthead {
   padding-top: 3rem;
-  padding-bottom: 6rem;
+  padding-bottom: 10rem;
 }
 
 header.masthead h1 {
