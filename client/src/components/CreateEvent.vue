@@ -44,7 +44,6 @@
                          <div class="">
                             <button class ="btn btn-primary" @click.prevent=addPlace>Agregar fecha</button>
                             <button class="btn btn-primary" @click=create>Submit</button>
-                            <div>{{rows}}</div>
                           </div>
                     </form>
                 </div>
