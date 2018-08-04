@@ -22,10 +22,10 @@ exports.postOptions = function (req, res) {
     var newOptions = [];
 
     req.body.forEach(element => {
-        console.log(element.time.HH + ":" + element.time.mm,);
+        var conTime = element.time.HH + ":" + element.time.mm;
         newOptions.push({
             date: element.date,
-            time: element.time.HH + ":" + element.time.mm,
+            time: conTime,
             place: element.place,
             votes: 0,
             EventId: req.params.id

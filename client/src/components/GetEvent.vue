@@ -15,13 +15,14 @@
         <a class="text-left">Elige una opcion</a>
           <div class="row mb-5 mx-auto">
             <div v-for="(option, index) in options" :key=index class="col-lg-4 col-md-4 col-10 mb-2 mx-auto ">
-              <div class="card text-white bg-dark">
+              <div class="card text-white bg-dark" >
                 <div class="card-body">
-                  <h5 class="card-title">Opcion {{index + 1 }}</h5>
+                  <h5 class="card-title">Opción {{index + 1 }} </h5>
                    <!-- este primer span tiene que cambiar a un link a maps  -->
+                  <p class="card-text">Total Votes: {{options[index].votes}}</p>
                   <p class="card-text">Lugar: {{options[index].place}}</p>
                   <p class="card-text">Fecha: {{options[index].date}}</p>
-                  <p class="card-text">Hora: {{options[index].hora}}</p>
+                  <p class="card-text">Hora: {{options[index].time}}</p>
                   <a @click.prevent=addVote(index) class="btn btn-primary">Vota!</a>
                 </div>
               </div>
@@ -32,7 +33,7 @@
         <div class="card-header">Resultados</div>
         <bars
           :height="300"
-          :data="[ 2, 5, 9,]"
+          :data="vdata"
           :gradient="['#6fa8dc', '#42b983']"
           :barWidth="50"
           :growDuration="5">
@@ -53,6 +54,7 @@ export default {
   name: 'GetEvent',
   data () {
     return {
+      vdata: [],
       id: null,
       name: null,
       description: null,
@@ -63,8 +65,10 @@ export default {
   },
   methods: {
     async addVote (index) {
-      (await OptionsService.putOption(this.id, this.options[index].id))
-      this.$router.push({name: 'votoexitoso'})
+      var success = (await OptionsService.putOption(this.id, this.options[index].id)).data[0]
+      if (success === 1) {
+        this.$router.push({name: 'votoexitoso'})
+      }
     }
   },
   created () {
@@ -78,6 +82,9 @@ export default {
 
       // get the options
       this.options = (await OptionsService.showOptions(this.id)).data
+      for (var i = 0; i < this.options.length; i++) {
+        this.vdata.push(this.options[i].votes)
+      }
     } catch (err) {
       console.log(err)
     }
